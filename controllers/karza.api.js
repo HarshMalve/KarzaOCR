@@ -41,7 +41,7 @@ module.exports = {
             const dataArr = {...req.body, file: fs.createReadStream(req.files.file['newPath'])};
             const responseArr = await utility.curl(URL, method, dataArr, KARZA_HEADER, 'form-data');
             const response = responseArr.response;
-            if (responseArr.httpStatusCode === 200 && (!utility.isEmpty(response) && response.statusCode)) {
+            if (responseArr.httpStatusCode === 200 && (!utility.isEmpty(response) && response.statusCode == 101)) {
                 const result = !utility.isEmpty(response.result) ? response.result[0] : '';
                 apiRes['details'] = result.details;
                 apiRes['type'] = !utility.isEmpty(result.type) ? result.type : '';
