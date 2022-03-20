@@ -47,6 +47,11 @@ module.exports = {
                 apiRes['type'] = !utility.isEmpty(result.type) ? result.type : '';
                 apiRes['karzaResponseInSec'] = `${responseArr.elapsedTime} seconds`;
                 res.status(200).json(apiRes);
+            } else {
+                res.status(400).json({
+                    message: 'Karza response error',
+                    error: response
+                });
             }
         } catch (error) {
             res.status(500).json({
