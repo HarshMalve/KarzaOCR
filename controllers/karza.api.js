@@ -53,6 +53,9 @@ module.exports = {
                     error: response
                 });
             }
+            fs.unlink(req.files.file['newPath'], (err) => {
+                if (err) throw new Error(err);
+            });
         } catch (error) {
             res.status(500).json({
                 message: 'Internal Server Error',
